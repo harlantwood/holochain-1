@@ -1,11 +1,50 @@
+{ nixpkgs ? import <nixpkgs> {} }:
+
 # This is an example of what downstream consumers of holonix should do
 # This is also used to dogfood as many commands as possible for holonix
 # For example the release process for holonix uses this file
 let
-
  # point this to your local config.nix file for this project
  # example.config.nix shows and documents a lot of the options
  config = import ./config.nix;
+
+  mkHolochainBinary = { package , cargoBuildFlags ? [ "--no-default-features" ] }: nixpkgs.rustPlatform.buildRustPackage {
+    pname = "holochain";
+    version = "develop";
+    src = nixpkgs.runCommand "holochain-src" {} ''
+      mkdir $out
+      cp -a --reflink=auto ${./Cargo.toml} $out/Cargo.toml
+      cp -a --reflink=auto ${./Cargo.lock} $out/Cargo.lock
+      cp -a --reflink=auto ${./crates} $out/crates
+      ls -lha $out/
+    '';
+
+    depsExtraArgs = {
+      cargoExtraManifests = [ "crates/test_utils/wasm/wasm_workspace/Cargo.toml" ];
+    };
+
+    nativeBuildInputs = [
+      nixpkgs.pkg-config
+    ];
+
+    buildInputs = [
+      nixpkgs.openssl.dev
+    ];
+
+    cargoSha256 = "0x4k9mcm2dy6ippkk145mkc7686ix2gy4adbhsyxgkak596x2ak7";
+    inherit cargoBuildFlags;
+
+    buildAndTestSubdir = "crates/${package}";
+    doCheck = false;
+
+    meta = with nixpkgs.stdenv.lib; {
+      description = "Holochain, a framework for distributed applications";
+      homepage = "https://github.com/holochain/holochain";
+      license = licenses.cpal10;
+      maintainers = [ "Holochain Core Dev Team <devcore@holochain.org>" ];
+    };
+  };
+
 
  # START HOLONIX IMPORT BOILERPLATE
  holonix = import (
@@ -20,9 +59,6 @@ let
 
  callPackage = holonix.pkgs.callPackage;
  writeShellScriptBin = holonix.pkgs.writeShellScriptBin;
-
-in {
-  inherit holonix;
 
   pkgs = {
     # release hooks
@@ -101,9 +137,9 @@ in {
     # convenience command for executing dna-util
     # until such time as we have release artifacts
     # that can be built directly as nix packages
-    dnaUtil = writeShellScriptBin "dna-util" ''
-      cargo run --manifest-path "''${HC_TARGET_PREFIX}/crates/dna_util/Cargo.toml" -- "''${@}"
-    '';
+    # dnaUtil = writeShellScriptBin "dna-util" ''
+    #   cargo run --manifest-path "''${HC_TARGET_PREFIX}/crates/dna_util/Cargo.toml" -- "''${@}"
+    # '';
 
     hcBench = writeShellScriptBin "hc-bench" ''
       cargo bench --bench bench
@@ -189,5 +225,66 @@ in {
       # generate a new github secret
       cat /dev/urandom | head -c 64 | base64
     '';
+
+    holochain = mkHolochainBinary { package = "holochain"; };
+    dnaUtil = mkHolochainBinary { package = "dna_util"; };
   };
+
+  shells = {
+    ciLegacy = holonix.pkgs.stdenv.mkDerivation (holonix.shell // {
+      shellHook = holonix.pkgs.lib.concatStrings [
+        holonix.shell.shellHook
+        ''
+         touch .env
+         source .env
+
+         export HC_TARGET_PREFIX=$NIX_ENV_PREFIX
+         export CARGO_TARGET_DIR="$HC_TARGET_PREFIX/target"
+         export HC_TEST_WASM_DIR="$HC_TARGET_PREFIX/.wasm_target"
+         mkdir -p $HC_TEST_WASM_DIR
+         export CARGO_CACHE_RUSTC_INFO=1
+
+         export HC_WASM_CACHE_PATH="$HC_TARGET_PREFIX/.wasm_cache"
+         mkdir -p $HC_WASM_CACHE_PATH
+
+         export PEWPEWPEW_PORT=4343
+        ''
+      ];
+
+      buildInputs = with holonix.pkgs; [
+          gnuplot
+          flamegraph
+          fd
+          ngrok
+          jq
+        ]
+        ++ holonix.shell.buildInputs
+        ++ (holonix.pkgs.lib.attrsets.mapAttrsToList (name: value: value.buildInputs) pkgs)
+      ;
+    });
+
+    coreDev = nixpkgs.mkShell {
+      nativeBuildInputs = []
+        ++ pkgs.holochain.nativeBuildInputs
+        ;
+
+      buildInputs = []
+        ++ pkgs.holochain.buildInputs
+        ++ [ nixpkgs.rustfmt ]
+        ;
+    };
+
+    happDev = nixpkgs.mkShell {
+      buildInputs = [
+        pkgs.holochain
+        pkgs.dnaUtil
+      ];
+    };
+  };
+in
+
+{
+  inherit holonix;
+  inherit pkgs;
+  inherit shells;
 }

@@ -18,6 +18,49 @@ commands:
       command: ./docker/push.sh << parameters.box >> $CIRCLE_BRANCH
 
 jobs:
+  build-binary-packages:
+    docker:
+     - image: nixos/nix
+    resource_class: xlarge
+    environment:
+     NIXPKGS_ALLOW_UNFREE: 1
+    steps:
+      - checkout
+      - run:
+         command: nix build --verbose -f default.nix pkgs.holochain
+
+  merge-test-nix:
+    docker:
+     - image: nixos/nix
+    resource_class: xlarge
+    environment:
+    steps:
+      - checkout
+      - run:
+         command: nix-shell --argstr flavor "coreDev" --pure --run "cargo test --all-features"
+      - run:
+         command: nix-shell --argstr flavor "coreDev" --pure --run "cargo fmt --all -- --check"
+      - run:
+         command: nix-shell --argstr flavor "coreDev" --pure --run "cargo clippy -- \
+                     -A clippy::nursery -D clippy::style -A clippy::cargo \
+                     -A clippy::pedantic -A clippy::restriction \
+                     -D clippy::complexity -D clippy::perf -D clippy::correctness"
+
+  merge-test-native:
+    docker:
+      - image: cimg/rust:1.48.0
+    steps:
+      - checkout
+      - run: |
+         sudo apt-get update
+         sudo apt-get install -y librust-openssl-dev
+         cargo test --all-features
+         cargo fmt --all -- --check
+         cargo clippy -- \
+            -A clippy::nursery -D clippy::style -A clippy::cargo \
+            -A clippy::pedantic -A clippy::restriction \
+            -D clippy::complexity -D clippy::perf -D clippy::correctness
+
   merge-test:
     docker:
      - image: holochain/holochain:circle.build.develop
@@ -30,7 +73,7 @@ jobs:
     steps:
       - checkout
       - run:
-          command: nix-shell --run hc-merge-test
+          command: nix-shell --argstr flavor ciLegacy --run hc-merge-test
 
   merge-test-mac:
    macos:
@@ -50,7 +93,7 @@ jobs:
         sh <(curl -L https://nixos.org/nix/install) --darwin-use-unencrypted-nix-store-volume
         . /Users/distiller/.nix-profile/etc/profile.d/nix.sh
         # do tests
-        nix-shell --run hc-merge-test
+        nix-shell --argstr flavor ciLegacy --run hc-merge-test
 
   docker-build-latest:
    resource_class: large
@@ -70,7 +113,10 @@ workflows:
  version: 2.1
  tests:
   jobs:
-   - merge-test
+   # - build-binary-packages
+   # - merge-test
+   # - merge-test-nix
+   - merge-test-native
    # - merge-test-mac
  docker-builds:
   triggers:
