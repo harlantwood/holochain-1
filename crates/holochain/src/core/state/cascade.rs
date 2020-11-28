@@ -25,9 +25,9 @@ use holochain_p2p::actor::GetMetaOptions;
 use holochain_p2p::actor::GetOptions;
 use holochain_p2p::HolochainP2pCell;
 use holochain_p2p::HolochainP2pCellT;
-use holochain_state::error::DatabaseResult;
-use holochain_state::fresh_reader;
-use holochain_state::prelude::*;
+use holochain_lmdb::error::DatabaseResult;
+use holochain_lmdb::fresh_reader;
+use holochain_lmdb::prelude::*;
 use holochain_types::activity::AgentActivity;
 use holochain_types::activity::ChainItems;
 use holochain_types::chain::AgentActivityExt;
@@ -1700,7 +1700,7 @@ where
     /// Get agent activity from agent activity authorities.
     /// Hashes are requested from the authority and cache for valid chains.
     /// Options:
-    /// - include_valid_activity will include the valid chain hashes.     
+    /// - include_valid_activity will include the valid chain hashes.
     /// - include_rejected_activity will include the valid chain hashes. (unimplemented)
     /// - include_full_headers will fetch the valid headers in parallel (requires include_valid_activity)
     /// Query:

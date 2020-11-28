@@ -10,13 +10,13 @@ use fallible_iterator::FallibleIterator;
 use holo_hash::AgentPubKey;
 use holo_hash::EntryHash;
 use holo_hash::HeaderHash;
-use holochain_state::env::EnvironmentRead;
-use holochain_state::env::EnvironmentWrite;
-use holochain_state::env::ReadManager;
-use holochain_state::error::DatabaseError;
-use holochain_state::fresh_reader;
-use holochain_state::prelude::PrefixType;
-use holochain_state::prelude::Readable;
+use holochain_lmdb::env::EnvironmentRead;
+use holochain_lmdb::env::EnvironmentWrite;
+use holochain_lmdb::env::ReadManager;
+use holochain_lmdb::error::DatabaseError;
+use holochain_lmdb::fresh_reader;
+use holochain_lmdb::prelude::PrefixType;
+use holochain_lmdb::prelude::Readable;
 use holochain_types::activity::AgentActivity;
 use holochain_types::activity::ChainItems;
 use holochain_types::element::ElementStatus;
@@ -381,7 +381,7 @@ fn _show_agent_activity_read_times(env: EnvironmentRead, agent: AgentPubKey) {
     }
     let element_integrated = ElementBuf::vault(env.clone(), false).unwrap();
     let meta_integrated = MetadataBuf::vault(env.clone()).unwrap();
-    holochain_state::fresh_reader_test!(env, |r| {
+    holochain_lmdb::fresh_reader_test!(env, |r| {
         let now = std::time::Instant::now();
         let hashes = meta_integrated
             .get_activity_sequence(

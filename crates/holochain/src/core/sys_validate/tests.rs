@@ -7,8 +7,8 @@ use error::SysValidationError;
 use holo_hash::fixt::*;
 use holochain_keystore::AgentPubKeyExt;
 use holochain_serialized_bytes::SerializedBytes;
-use holochain_state::env::EnvironmentRead;
-use holochain_state::test_utils::test_cell_env;
+use holochain_lmdb::env::EnvironmentRead;
+use holochain_lmdb::test_utils::test_cell_env;
 use holochain_types::dna::DnaDef;
 use holochain_types::dna::DnaFile;
 use holochain_types::fixt::*;
@@ -22,7 +22,7 @@ use std::convert::TryFrom;
 
 #[tokio::test(threaded_scheduler)]
 async fn verify_header_signature_test() {
-    let keystore = holochain_state::test_utils::test_keystore();
+    let keystore = holochain_lmdb::test_utils::test_keystore();
     let author = fake_agent_pubkey_1();
     let mut header = fixt!(CreateLink);
     header.author = author.clone();

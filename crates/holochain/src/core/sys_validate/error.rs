@@ -11,7 +11,7 @@ use crate::from_sub_error;
 use holo_hash::AnyDhtHash;
 use holo_hash::HeaderHash;
 use holochain_keystore::KeystoreError;
-use holochain_state::error::DatabaseError;
+use holochain_lmdb::error::DatabaseError;
 use holochain_types::cell::CellId;
 use holochain_zome_types::header::AppEntryType;
 use holochain_zome_types::header::EntryType;

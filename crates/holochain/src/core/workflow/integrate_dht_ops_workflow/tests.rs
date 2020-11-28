@@ -17,11 +17,11 @@ use crate::here;
 use crate::test_utils::test_network;
 use ::fixt::prelude::*;
 use holo_hash::*;
-use holochain_state::env::EnvironmentWrite;
-use holochain_state::env::ReadManager;
-use holochain_state::env::WriteManager;
-use holochain_state::error::DatabaseError;
-use holochain_state::test_utils::test_cell_env;
+use holochain_lmdb::env::EnvironmentWrite;
+use holochain_lmdb::env::ReadManager;
+use holochain_lmdb::env::WriteManager;
+use holochain_lmdb::error::DatabaseError;
+use holochain_lmdb::test_utils::test_cell_env;
 use holochain_types::dht_op::DhtOp;
 use holochain_types::dht_op::DhtOpHashed;
 use holochain_types::dna::zome::Zome;
@@ -1090,7 +1090,7 @@ async fn get_links(
 async fn test_metadata_from_wasm_api() {
     // test workspace boilerplate
     observability::test_run().ok();
-    let test_env = holochain_state::test_utils::test_cell_env();
+    let test_env = holochain_lmdb::test_utils::test_cell_env();
     let env = test_env.env();
     clear_dbs(env.clone());
 
@@ -1156,7 +1156,7 @@ async fn test_metadata_from_wasm_api() {
 async fn test_wasm_api_without_integration_links() {
     // test workspace boilerplate
     observability::test_run().ok();
-    let test_env = holochain_state::test_utils::test_cell_env();
+    let test_env = holochain_lmdb::test_utils::test_cell_env();
     let env = test_env.env();
     clear_dbs(env.clone());
 
@@ -1208,7 +1208,7 @@ async fn test_wasm_api_without_integration_links() {
 async fn test_wasm_api_without_integration_delete() {
     // test workspace boilerplate
     observability::test_run().ok();
-    let test_env = holochain_state::test_utils::test_cell_env();
+    let test_env = holochain_lmdb::test_utils::test_cell_env();
     let env = test_env.env();
     let env_ref = env.guard();
     clear_dbs(env.clone());
@@ -1329,9 +1329,9 @@ mod slow_tests {
     use fixt::prelude::*;
     use holo_hash::EntryHash;
     use holochain_serialized_bytes::SerializedBytes;
-    use holochain_state::db::GetDb;
-    use holochain_state::db::INTEGRATED_DHT_OPS;
-    use holochain_state::env::ReadManager;
+    use holochain_lmdb::db::GetDb;
+    use holochain_lmdb::db::INTEGRATED_DHT_OPS;
+    use holochain_lmdb::env::ReadManager;
     use holochain_types::app::InstalledCell;
     use holochain_types::cell::CellId;
     use holochain_types::dna::DnaDef;

@@ -3,7 +3,7 @@ use hdk3::prelude::*;
 use holochain::conductor::Conductor;
 use holochain::core::ribosome::ZomeCallInvocation;
 use holochain_keystore::KeystoreSender;
-use holochain_state::test_utils::test_environments;
+use holochain_lmdb::test_utils::test_environments;
 use holochain_types::app::InstalledCell;
 use holochain_types::dna::zome::inline_zome::InlineZome;
 use holochain_types::dna::DnaFile;

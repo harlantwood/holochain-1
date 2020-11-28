@@ -2,7 +2,7 @@ use crate::core::workflow::produce_dht_ops_workflow::dht_op_light::error::DhtOpC
 use holo_hash::EntryHash;
 use holo_hash::HeaderHash;
 use holochain_serialized_bytes::prelude::*;
-use holochain_state::error::DatabaseError;
+use holochain_lmdb::error::DatabaseError;
 use holochain_types::dht_op::error::DhtOpError;
 use thiserror::Error;
 

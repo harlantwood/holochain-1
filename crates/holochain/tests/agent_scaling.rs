@@ -5,7 +5,7 @@ use holochain::core::ribosome::ZomeCallInvocation;
 use holochain::test_utils::conductor_setup::ConductorTestData;
 use holochain_keystore::keystore_actor::KeystoreSenderExt;
 use holochain_serialized_bytes::prelude::*;
-use holochain_state::test_utils::test_environments;
+use holochain_lmdb::test_utils::test_environments;
 use holochain_types::dna::DnaDef;
 use holochain_types::dna::DnaFile;
 use holochain_wasm_test_utils::TestWasm;

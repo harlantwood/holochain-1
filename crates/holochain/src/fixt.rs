@@ -35,8 +35,8 @@ use holo_hash::EntryHash;
 use holo_hash::HeaderHash;
 use holo_hash::WasmHash;
 use holochain_keystore::keystore_actor::KeystoreSender;
+use holochain_lmdb::test_utils::test_keystore;
 use holochain_p2p::HolochainP2pCellFixturator;
-use holochain_state::test_utils::test_keystore;
 use holochain_types::cell::CellId;
 use holochain_types::dna::wasm::DnaWasm;
 use holochain_types::dna::zome::WasmZome;
@@ -290,7 +290,7 @@ fixturator!(
         //      It is assumed that this value is never really used in any "real"
         //      way, because previously, it was implemented as a null pointer
         //      wrapped in an UnsafeZomeCallWorkspace
-        let env = holochain_state::test_utils::test_cell_env();
+        let env = holochain_lmdb::test_utils::test_cell_env();
         CallZomeWorkspaceLock::new(CallZomeWorkspace::new(env.env().into()).unwrap())
     };
     curve Unpredictable {

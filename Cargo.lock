@@ -1353,9 +1353,9 @@ dependencies = [
  "hdk3",
  "holo_hash",
  "holochain_keystore",
+ "holochain_lmdb",
  "holochain_p2p",
  "holochain_serialized_bytes",
- "holochain_state",
  "holochain_types",
  "holochain_wasm_test_utils",
  "holochain_wasmer_host",
@@ -1418,6 +1418,41 @@ dependencies = [
 ]
 
 [[package]]
+name = "holochain_lmdb"
+version = "0.0.1"
+dependencies = [
+ "anyhow",
+ "byteorder",
+ "chrono",
+ "derive_more",
+ "either",
+ "failure",
+ "fallible-iterator",
+ "fixt",
+ "futures",
+ "holo_hash",
+ "holochain_keystore",
+ "holochain_serialized_bytes",
+ "holochain_types",
+ "lazy_static",
+ "must_future",
+ "nanoid",
+ "parking_lot",
+ "rand 0.7.3",
+ "rkv",
+ "rmp-serde",
+ "serde",
+ "serde_derive",
+ "shrinkwraprs",
+ "tempdir",
+ "thiserror",
+ "tokio",
+ "tokio_safe_block_on",
+ "tracing",
+ "tracing-futures",
+]
+
+[[package]]
 name = "holochain_p2p"
 version = "0.0.1"
 dependencies = [
@@ -1464,41 +1499,6 @@ checksum = "2dbbf84d56f0a0cb00e5532fd4d40b1d42ffb403a1a964d8eeedc4d40131e208"
 dependencies = [
  "quote 0.6.13",
  "syn 0.15.44",
-]
-
-[[package]]
-name = "holochain_state"
-version = "0.0.1"
-dependencies = [
- "anyhow",
- "byteorder",
- "chrono",
- "derive_more",
- "either",
- "failure",
- "fallible-iterator",
- "fixt",
- "futures",
- "holo_hash",
- "holochain_keystore",
- "holochain_serialized_bytes",
- "holochain_types",
- "lazy_static",
- "must_future",
- "nanoid",
- "parking_lot",
- "rand 0.7.3",
- "rkv",
- "rmp-serde",
- "serde",
- "serde_derive",
- "shrinkwraprs",
- "tempdir",
- "thiserror",
- "tokio",
- "tokio_safe_block_on",
- "tracing",
- "tracing-futures",
 ]
 
 [[package]]

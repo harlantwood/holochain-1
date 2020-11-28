@@ -258,7 +258,7 @@ pub mod test {
     use crate::fixt::RealRibosomeFixturator;
     use futures::future::FutureExt;
     use holochain_serialized_bytes::prelude::*;
-    use holochain_state::test_utils::test_environments;
+    use holochain_lmdb::test_utils::test_environments;
     use holochain_types::app::InstallAppDnaPayload;
     use holochain_types::app::InstallAppPayload;
     use holochain_types::app::InstalledCell;

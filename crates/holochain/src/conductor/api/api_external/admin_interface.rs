@@ -468,7 +468,7 @@ mod test {
     use super::*;
     use crate::conductor::Conductor;
     use anyhow::Result;
-    use holochain_state::test_utils::test_environments;
+    use holochain_lmdb::test_utils::test_environments;
     use holochain_types::app::InstallAppDnaPayload;
     use holochain_types::observability;
     use holochain_types::test_utils::fake_agent_pubkey_1;

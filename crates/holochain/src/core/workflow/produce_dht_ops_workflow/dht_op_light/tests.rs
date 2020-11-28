@@ -14,7 +14,7 @@ use crate::fixt::UpdateFixturator;
 use ::fixt::prelude::*;
 use holo_hash::fixt::HeaderHashFixturator;
 use holo_hash::*;
-use holochain_state::test_utils::test_cell_env;
+use holochain_lmdb::test_utils::test_cell_env;
 use holochain_types::dht_op::produce_ops_from_element;
 use holochain_types::dht_op::DhtOp;
 use holochain_types::element::Element;

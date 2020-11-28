@@ -1,5 +1,5 @@
 [package]
-name = "holochain_state"
+name = "holochain_lmdb"
 version = "0.0.1"
 description = "Abstractions for persistence of Holochain state"
 license = "CAL-1.0"
