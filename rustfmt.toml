@@ -1,4 +1,7 @@
 reorder_imports = true
 
+
+flatten_imports = true
+
 # unstable but desirable:
 # merge_imports = true

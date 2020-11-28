@@ -829,6 +829,7 @@ name = "dna_util"
 version = "0.0.1"
 dependencies = [
  "holo_hash",
+ "holochain_nucleus",
  "holochain_serialized_bytes",
  "holochain_types",
  "holochain_zome_types",
@@ -1354,8 +1355,10 @@ dependencies = [
  "holo_hash",
  "holochain_keystore",
  "holochain_lmdb",
+ "holochain_nucleus",
  "holochain_p2p",
  "holochain_serialized_bytes",
+ "holochain_state",
  "holochain_types",
  "holochain_wasm_test_utils",
  "holochain_wasmer_host",
@@ -1453,6 +1456,46 @@ dependencies = [
 ]
 
 [[package]]
+name = "holochain_nucleus"
+version = "0.0.1"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "backtrace",
+ "base64 0.10.1",
+ "chrono",
+ "derive_builder",
+ "derive_more",
+ "fixt",
+ "flate2",
+ "futures",
+ "holo_hash",
+ "holochain_keystore",
+ "holochain_serialized_bytes",
+ "holochain_types",
+ "holochain_wasm_test_utils",
+ "holochain_zome_types",
+ "lazy_static",
+ "maplit",
+ "must_future",
+ "nanoid",
+ "observability",
+ "rand 0.7.3",
+ "regex",
+ "serde",
+ "serde_bytes",
+ "serde_derive",
+ "serde_json",
+ "shrinkwraprs",
+ "strum",
+ "tempdir",
+ "thiserror",
+ "tokio",
+ "tokio_safe_block_on",
+ "tracing",
+]
+
+[[package]]
 name = "holochain_p2p"
 version = "0.0.1"
 dependencies = [
@@ -1499,6 +1542,76 @@ checksum = "2dbbf84d56f0a0cb00e5532fd4d40b1d42ffb403a1a964d8eeedc4d40131e208"
 dependencies = [
  "quote 0.6.13",
  "syn 0.15.44",
+]
+
+[[package]]
+name = "holochain_state"
+version = "0.0.1"
+dependencies = [
+ "anyhow",
+ "assert_cmd",
+ "async-trait",
+ "base64 0.10.1",
+ "byteorder",
+ "cfg-if 0.1.10",
+ "chrono",
+ "criterion",
+ "derivative",
+ "derive_more",
+ "directories 2.0.2",
+ "either",
+ "fallible-iterator",
+ "fixt",
+ "futures",
+ "ghost_actor",
+ "hdk3",
+ "holo_hash",
+ "holochain_keystore",
+ "holochain_lmdb",
+ "holochain_p2p",
+ "holochain_serialized_bytes",
+ "holochain_types",
+ "holochain_wasm_test_utils",
+ "holochain_wasmer_host",
+ "holochain_websocket",
+ "holochain_zome_types",
+ "human-panic",
+ "kitsune_p2p",
+ "lazy_static",
+ "maplit",
+ "matches",
+ "mockall",
+ "must_future",
+ "nanoid",
+ "num_cpus",
+ "observability",
+ "once_cell",
+ "parking_lot",
+ "predicates",
+ "pretty_assertions",
+ "rand 0.7.3",
+ "ring",
+ "serde",
+ "serde_json",
+ "serde_yaml",
+ "serial_test",
+ "shrinkwraprs",
+ "structopt",
+ "strum",
+ "tempdir",
+ "test-case",
+ "test_wasm_common",
+ "thiserror",
+ "tokio",
+ "tokio_safe_block_on",
+ "toml",
+ "tracing",
+ "tracing-futures",
+ "unwrap_to",
+ "url 1.7.2",
+ "url2",
+ "url_serde",
+ "uuid 0.7.4",
 ]
 
 [[package]]

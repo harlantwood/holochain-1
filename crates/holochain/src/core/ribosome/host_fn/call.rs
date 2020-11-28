@@ -64,8 +64,8 @@ pub mod wasm_test {
     use holo_hash::HeaderHash;
     use holochain_serialized_bytes::SerializedBytes;
     use holochain_types::app::InstalledCell;
-    use holochain_types::dna::DnaDef;
-    use holochain_types::dna::DnaFile;
+    use holochain_nucleus::dna::DnaDef;
+    use holochain_nucleus::dna::DnaFile;
     use holochain_wasm_test_utils::TestWasm;
     use holochain_zome_types::test_utils::fake_agent_pubkey_2;
     use holochain_zome_types::ExternInput;
@@ -74,10 +74,10 @@ pub mod wasm_test {
 
     use crate::conductor::ConductorHandle;
     use crate::core::ribosome::ZomeCallInvocation;
-    use crate::core::state::element_buf::ElementBuf;
     use crate::test_utils::conductor_setup::ConductorTestData;
     use crate::test_utils::install_app;
     use crate::test_utils::new_invocation;
+    use holochain_state::element_buf::ElementBuf;
 
     #[tokio::test(threaded_scheduler)]
     async fn call_test() {

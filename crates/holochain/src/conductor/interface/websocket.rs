@@ -254,7 +254,7 @@ pub mod test {
     use crate::conductor::state::ConductorState;
     use crate::conductor::Conductor;
     use crate::conductor::ConductorHandle;
-    use crate::core::state::source_chain::SourceChainBuf;
+    use holochain_state::source_chain::SourceChainBuf;
     use crate::fixt::RealRibosomeFixturator;
     use futures::future::FutureExt;
     use holochain_serialized_bytes::prelude::*;
@@ -266,7 +266,7 @@ pub mod test {
     use holochain_types::observability;
     use holochain_types::test_utils::fake_agent_pubkey_1;
     use holochain_types::test_utils::fake_dna_file;
-    use holochain_types::test_utils::fake_dna_zomes;
+    use holochain_nucleus::test_utils::fake_dna_zomes;
     use holochain_wasm_test_utils::TestWasm;
     use holochain_websocket::WebsocketMessage;
     use holochain_zome_types::ExternInput;

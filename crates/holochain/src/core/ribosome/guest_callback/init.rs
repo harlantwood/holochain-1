@@ -8,8 +8,8 @@ use holo_hash::EntryHash;
 use holochain_keystore::KeystoreSender;
 use holochain_p2p::HolochainP2pCell;
 use holochain_serialized_bytes::prelude::*;
-use holochain_types::dna::zome::HostFnAccess;
-use holochain_types::dna::DnaDef;
+use holochain_nucleus::dna::zome::HostFnAccess;
+use holochain_nucleus::dna::DnaDef;
 use holochain_zome_types::init::InitCallbackResult;
 use holochain_zome_types::zome::ZomeName;
 use holochain_zome_types::ExternInput;
@@ -106,7 +106,7 @@ mod test {
     use crate::fixt::ZomeNameFixturator;
     use ::fixt::prelude::*;
     use holochain_serialized_bytes::prelude::*;
-    use holochain_types::dna::zome::HostFnAccess;
+    use holochain_nucleus::dna::zome::HostFnAccess;
     use holochain_zome_types::init::InitCallbackResult;
     use holochain_zome_types::ExternInput;
 

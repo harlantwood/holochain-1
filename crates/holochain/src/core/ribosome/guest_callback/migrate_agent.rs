@@ -5,9 +5,9 @@ use crate::core::ribosome::ZomesToInvoke;
 use crate::core::workflow::CallZomeWorkspaceLock;
 use derive_more::Constructor;
 use holochain_serialized_bytes::prelude::*;
-use holochain_types::dna::zome::HostFnAccess;
-use holochain_types::dna::zome::Permission;
-use holochain_types::dna::DnaDef;
+use holochain_nucleus::dna::zome::HostFnAccess;
+use holochain_nucleus::dna::zome::Permission;
+use holochain_nucleus::dna::DnaDef;
 use holochain_zome_types::migrate_agent::MigrateAgent;
 use holochain_zome_types::migrate_agent::MigrateAgentCallbackResult;
 use holochain_zome_types::zome::ZomeName;
@@ -117,7 +117,7 @@ mod test {
     use crate::fixt::MigrateAgentInvocationFixturator;
     use crate::fixt::ZomeNameFixturator;
     use holochain_serialized_bytes::prelude::*;
-    use holochain_types::dna::zome::HostFnAccess;
+    use holochain_nucleus::dna::zome::HostFnAccess;
     use holochain_zome_types::migrate_agent::MigrateAgent;
     use holochain_zome_types::migrate_agent::MigrateAgentCallbackResult;
     use holochain_zome_types::ExternInput;
@@ -173,7 +173,7 @@ mod test {
 
     #[tokio::test(threaded_scheduler)]
     async fn migrate_agent_invocation_allow_side_effects() {
-        use holochain_types::dna::zome::Permission::*;
+        use holochain_nucleus::dna::zome::Permission::*;
         let migrate_agent_host_access = MigrateAgentHostAccessFixturator::new(fixt::Unpredictable)
             .next()
             .unwrap();

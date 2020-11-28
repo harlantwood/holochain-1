@@ -63,7 +63,7 @@ use holochain_types::app::InstalledCell;
 use holochain_types::app::MembraneProof;
 use holochain_types::autonomic::AutonomicCue;
 use holochain_types::cell::CellId;
-use holochain_types::dna::DnaFile;
+use holochain_nucleus::dna::DnaFile;
 use holochain_types::prelude::*;
 use holochain_zome_types::entry_def::EntryDef;
 use std::sync::Arc;

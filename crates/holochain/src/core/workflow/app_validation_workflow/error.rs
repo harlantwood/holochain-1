@@ -5,7 +5,7 @@ use thiserror::Error;
 
 use crate::conductor::entry_def_store::error::EntryDefStoreError;
 use crate::core::ribosome::error::RibosomeError;
-use crate::core::state::cascade::error::CascadeError;
+use holochain_state::cascade::error::CascadeError;
 use crate::core::validation::OutcomeOrError;
 use crate::core::SourceChainError;
 use crate::from_sub_error;

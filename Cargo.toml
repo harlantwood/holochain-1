@@ -7,7 +7,10 @@ members = [
   "crates/holo_hash",
   "crates/holochain",
   "crates/holochain_lmdb",
+  "crates/holochain_nucleus",
   "crates/holochain_p2p",
+  "crates/holochain_state",
+  "crates/holochain_types",
   "crates/keystore",
   "crates/kitsune_p2p/kitsune_p2p",
   "crates/kitsune_p2p/transport_quic",
@@ -15,7 +18,6 @@ members = [
   "crates/kitsune_p2p/proxy",
   "crates/test_utils/wasm",
   "crates/test_utils/wasm_common",
-  "crates/types",
   "crates/websocket",
 ]
 

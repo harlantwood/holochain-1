@@ -7,9 +7,9 @@ use derive_more::Constructor;
 use holo_hash::AnyDhtHash;
 use holochain_p2p::HolochainP2pCell;
 use holochain_serialized_bytes::prelude::*;
-use holochain_types::dna::zome::HostFnAccess;
-use holochain_types::dna::zome::Permission;
-use holochain_types::dna::zome::Zome;
+use holochain_nucleus::dna::zome::HostFnAccess;
+use holochain_nucleus::dna::zome::Permission;
+use holochain_nucleus::dna::zome::Zome;
 use holochain_zome_types::entry::Entry;
 use holochain_zome_types::header::CreateLink;
 use holochain_zome_types::header::DeleteLink;
@@ -191,8 +191,8 @@ mod test {
     use crate::fixt::*;
     use ::fixt::prelude::*;
     use holochain_serialized_bytes::prelude::*;
-    use holochain_types::dna::zome::HostFnAccess;
-    use holochain_types::dna::zome::Permission;
+    use holochain_nucleus::dna::zome::HostFnAccess;
+    use holochain_nucleus::dna::zome::Permission;
     use holochain_zome_types::validate_link::ValidateCreateLinkData;
     use holochain_zome_types::validate_link::ValidateLinkCallbackResult;
     use holochain_zome_types::ExternInput;
@@ -297,13 +297,13 @@ mod test {
 mod slow_tests {
     use super::ValidateLinkResult;
     use crate::core::ribosome::RibosomeT;
-    use crate::core::state::source_chain::SourceChainResult;
+    use holochain_state::source_chain::SourceChainResult;
     use crate::core::workflow::call_zome_workflow::CallZomeWorkspace;
     use crate::fixt::curve::Zomes;
     use crate::fixt::*;
     use ::fixt::prelude::*;
     use holo_hash::HeaderHash;
-    use holochain_types::dna::zome::Zome;
+    use holochain_nucleus::dna::zome::Zome;
     use holochain_wasm_test_utils::TestWasm;
 
     #[tokio::test(threaded_scheduler)]

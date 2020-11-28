@@ -1,4 +1,4 @@
-use crate::core::state::element_buf::ElementBuf;
+use holochain_state::element_buf::ElementBuf;
 use crate::fixt::AgentValidationPkgFixturator;
 use crate::fixt::CloseChainFixturator;
 use crate::fixt::CreateFixturator;

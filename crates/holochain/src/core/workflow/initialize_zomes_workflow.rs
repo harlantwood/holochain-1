@@ -6,11 +6,11 @@ use crate::core::ribosome::guest_callback::init::InitHostAccess;
 use crate::core::ribosome::guest_callback::init::InitInvocation;
 use crate::core::ribosome::guest_callback::init::InitResult;
 use crate::core::ribosome::RibosomeT;
-use crate::core::state::workspace::Workspace;
+use holochain_state::workspace::Workspace;
 use derive_more::Constructor;
 use holochain_keystore::KeystoreSender;
 use holochain_p2p::HolochainP2pCell;
-use holochain_types::dna::DnaDef;
+use holochain_nucleus::dna::DnaDef;
 use holochain_zome_types::header::builder;
 use tracing::*;
 

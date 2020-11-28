@@ -17,8 +17,8 @@ use holochain_types::app::InstalledApp;
 use holochain_types::app::InstalledAppId;
 use holochain_types::app::InstalledCell;
 use holochain_types::cell::CellId;
-use holochain_types::dna::DnaFile;
-use holochain_types::dna::JsonProperties;
+use holochain_nucleus::dna::DnaFile;
+use holochain_nucleus::dna::JsonProperties;
 use std::path::PathBuf;
 use tracing::*;
 
@@ -473,7 +473,7 @@ mod test {
     use holochain_types::observability;
     use holochain_types::test_utils::fake_agent_pubkey_1;
     use holochain_types::test_utils::fake_dna_file;
-    use holochain_types::test_utils::fake_dna_zomes;
+    use holochain_nucleus::test_utils::fake_dna_zomes;
     use holochain_types::test_utils::write_fake_dna_file;
     use holochain_wasm_test_utils::TestWasm;
     use matches::assert_matches;

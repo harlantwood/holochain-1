@@ -4,7 +4,7 @@ use crate::core::ribosome::Invocation;
 use crate::core::ribosome::ZomesToInvoke;
 use derive_more::Constructor;
 use holochain_serialized_bytes::prelude::*;
-use holochain_types::dna::zome::HostFnAccess;
+use holochain_nucleus::dna::zome::HostFnAccess;
 use holochain_zome_types::entry_def::EntryDefs;
 use holochain_zome_types::entry_def::EntryDefsCallbackResult;
 use holochain_zome_types::zome::ZomeName;
@@ -102,7 +102,7 @@ mod test {
     use crate::fixt::ZomeNameFixturator;
     use ::fixt::prelude::*;
     use holochain_serialized_bytes::prelude::*;
-    use holochain_types::dna::zome::HostFnAccess;
+    use holochain_nucleus::dna::zome::HostFnAccess;
     use holochain_zome_types::entry_def::EntryDefsCallbackResult;
     use holochain_zome_types::ExternInput;
     use std::collections::BTreeMap;

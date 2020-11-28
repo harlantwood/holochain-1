@@ -3,12 +3,12 @@
 
 use crate::conductor::api::error::ConductorApiError;
 use crate::conductor::interface::error::InterfaceError;
-use crate::core::state::cascade::error::CascadeError;
-use crate::core::state::source_chain::SourceChainError;
 use holo_hash::AnyDhtHash;
 use holochain_serialized_bytes::prelude::SerializedBytesError;
-use holochain_types::dna::error::DnaError;
-use holochain_types::dna::zome::inline_zome::error::InlineZomeError;
+use holochain_state::cascade::error::CascadeError;
+use holochain_state::source_chain::SourceChainError;
+use holochain_nucleus::dna::error::DnaError;
+use holochain_nucleus::dna::zome::inline_zome::error::InlineZomeError;
 use holochain_wasmer_host::prelude::WasmError;
 use holochain_zome_types::zome::FunctionName;
 use holochain_zome_types::zome::ZomeName;

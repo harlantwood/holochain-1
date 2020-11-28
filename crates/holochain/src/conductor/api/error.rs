@@ -5,8 +5,8 @@ use crate::conductor::error::CreateAppError;
 use crate::conductor::interface::error::InterfaceError;
 use crate::conductor::CellError;
 use crate::core::ribosome::error::RibosomeError;
-use crate::core::state::source_chain::SourceChainError;
-use crate::core::state::workspace::WorkspaceError;
+use holochain_state::source_chain::SourceChainError;
+use holochain_state::workspace::WorkspaceError;
 use crate::core::workflow::error::WorkflowError;
 use holo_hash::DnaHash;
 use holochain_lmdb::error::DatabaseError;
@@ -64,7 +64,7 @@ pub enum ConductorApiError {
 
     /// DnaError
     #[error("DnaError: {0}")]
-    DnaError(#[from] holochain_types::dna::DnaError),
+    DnaError(#[from] holochain_nucleus::dna::DnaError),
 
     /// The Dna file path provided was invalid
     #[error("The Dna file path provided was invalid")]

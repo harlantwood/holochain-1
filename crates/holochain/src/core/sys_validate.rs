@@ -10,10 +10,10 @@ use crate::conductor::api::CellConductorApiT;
 use crate::conductor::entry_def_store::get_entry_def;
 use fallible_iterator::FallibleIterator;
 use holochain_keystore::AgentPubKeyExt;
-use holochain_p2p::HolochainP2pCell;
 use holochain_lmdb::env::EnvironmentWrite;
 use holochain_lmdb::error::DatabaseResult;
 use holochain_lmdb::fresh_reader;
+use holochain_p2p::HolochainP2pCell;
 use holochain_types::dht_op::DhtOp;
 use holochain_types::header::NewEntryHeaderRef;
 use holochain_types::Entry;
@@ -29,9 +29,9 @@ use holochain_zome_types::validate::ValidationStatus;
 use holochain_zome_types::Header;
 use std::convert::TryInto;
 
-pub use crate::core::state::source_chain::SourceChainError;
-pub use crate::core::state::source_chain::SourceChainResult;
 pub(super) use error::*;
+pub use holochain_state::source_chain::SourceChainError;
+pub use holochain_state::source_chain::SourceChainResult;
 
 pub use holo_hash::*;
 pub use holochain_types::element::Element;

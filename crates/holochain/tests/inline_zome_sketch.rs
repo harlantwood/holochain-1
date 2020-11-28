@@ -5,8 +5,8 @@ use holochain::core::ribosome::ZomeCallInvocation;
 use holochain_keystore::KeystoreSender;
 use holochain_lmdb::test_utils::test_environments;
 use holochain_types::app::InstalledCell;
-use holochain_types::dna::zome::inline_zome::InlineZome;
-use holochain_types::dna::DnaFile;
+use holochain_nucleus::dna::zome::inline_zome::InlineZome;
+use holochain_nucleus::dna::DnaFile;
 use holochain_zome_types::element::ElementEntry;
 use unwrap_to::unwrap_to;
 

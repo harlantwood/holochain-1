@@ -11,7 +11,7 @@ use crate::core::ribosome::FnComponents;
 use crate::core::ribosome::Invocation;
 use crate::core::ribosome::RibosomeT;
 use fallible_iterator::FallibleIterator;
-use holochain_types::dna::zome::Zome;
+use holochain_nucleus::dna::zome::Zome;
 use holochain_zome_types::ExternOutput;
 
 pub struct CallIterator<R: RibosomeT, I: Invocation> {
@@ -78,7 +78,7 @@ mod tests {
     use crate::fixt::ZomeCallHostAccessFixturator;
     use crate::fixt::ZomeFixturator;
     use fallible_iterator::FallibleIterator;
-    use holochain_types::dna::zome::Zome;
+    use holochain_nucleus::dna::zome::Zome;
     use holochain_zome_types::init::InitCallbackResult;
     use holochain_zome_types::zome::FunctionName;
     use holochain_zome_types::ExternOutput;

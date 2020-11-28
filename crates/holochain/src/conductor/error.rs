@@ -52,7 +52,7 @@ pub enum ConductorError {
     SubmitTaskError(String),
 
     #[error("DnaError: {0}")]
-    DnaError(#[from] holochain_types::dna::DnaError),
+    DnaError(#[from] holochain_nucleus::dna::DnaError),
 
     #[error("Workflow error: {0:?}")]
     WorkflowError(#[from] WorkflowError),

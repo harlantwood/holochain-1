@@ -120,9 +120,6 @@ pub mod wasm_test {
     use super::create;
     use crate::core::ribosome::error::RibosomeError;
     use crate::core::ribosome::ZomeCallInvocation;
-    use crate::core::state::source_chain::ChainInvalidReason;
-    use crate::core::state::source_chain::SourceChainError;
-    use crate::core::state::source_chain::SourceChainResult;
     use crate::core::workflow::call_zome_workflow::CallZomeWorkspace;
     use crate::fixt::CallContextFixturator;
     use crate::fixt::EntryFixturator;
@@ -133,10 +130,13 @@ pub mod wasm_test {
     use hdk3::prelude::*;
     use holo_hash::AnyDhtHash;
     use holo_hash::EntryHash;
+    use holochain_state::source_chain::ChainInvalidReason;
+    use holochain_state::source_chain::SourceChainError;
+    use holochain_state::source_chain::SourceChainResult;
     use holochain_types::app::InstalledCell;
     use holochain_types::cell::CellId;
-    use holochain_types::dna::DnaDef;
-    use holochain_types::dna::DnaFile;
+    use holochain_nucleus::dna::DnaDef;
+    use holochain_nucleus::dna::DnaFile;
     use holochain_types::fixt::AppEntry;
     use holochain_types::observability;
     use holochain_types::test_utils::fake_agent_pubkey_1;
